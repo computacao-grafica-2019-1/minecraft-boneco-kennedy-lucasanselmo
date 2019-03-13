@@ -1,7 +1,10 @@
-function setup() {
-	createCanvas(400, 270);
+let anguloDireito = 0;
+let anguloEsquerdo = 0;
+
+
+function draw() {
+	createCanvas(500, 300);
 	background(255);
-	
 	//Desenha Cabeça!
 	push();
 	translate(195, 60);
@@ -21,6 +24,7 @@ function setup() {
 	//Desenha Braço D!
 	push();
 	translate(145, 87);
+	rotate(radians(anguloDireito))
 	rect(-80, -17, 80, 35);
 	fill(0);
 	circle(0,0,4);
@@ -29,6 +33,7 @@ function setup() {
 	//Desenha Braço E!
 	push();
 	translate(245, 87);
+	rotate(radians(anguloEsquerdo))
 	rect(0, -17, 80, 35);
 	fill(0);
 	circle(0,0,4);
@@ -49,8 +54,26 @@ function setup() {
 	fill(0);
 	circle(0,0,4);
 	pop();
+
+	text("Pressione a tecla e para levantar o braço esquerdo; tecla d para levantar o braço direito", 20, height - 5);
+	
+
+
 }
 
-function draw() {
+function keyPressed() {
+
+	//Balança BD
+  if (keyCode === 68 & anguloDireito == 0) {
+    anguloDireito = 30;
+  } else if (keyCode === 68 & anguloDireito == 30) {
+    anguloDireito = 0;
+  }
+  //Balnça BE 
+  if (keyCode === 69 & anguloEsquerdo == 0) {
+    anguloEsquerdo = -30;
+  } else if (keyCode === 69 & anguloEsquerdo == -30) {
+    anguloEsquerdo = 0;
+  }
 
 }
